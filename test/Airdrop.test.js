@@ -1,7 +1,7 @@
 const { expect } = require('chai');
-const { BN, expectRevert, ether } = require('@openzeppelin/test-helpers');
+const { expectRevert, ether } = require('@openzeppelin/test-helpers');
 
-const Token = artifacts.require('Token');
+const CrossToken = artifacts.require('CrossToken');
 const Airdrop = artifacts.require('Airdrop');
 
 contract('Airdrop', (accounts) => {
@@ -9,10 +9,10 @@ contract('Airdrop', (accounts) => {
     const r1 = accounts[1];
     const r2 = accounts[2];
 
-    const totalSupply = ether('55000000000');
+    const totalSupply = ether('55000000');
 
     beforeEach(async () => {
-        this.token = await Token.new({ from: owner });
+        this.token = await CrossToken.new({ from: owner });
         this.airdrop = await Airdrop.new(this.token.address, { from: owner });
 
         const realTotalSupply = await this.token.totalSupply();
