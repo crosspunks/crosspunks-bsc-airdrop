@@ -13,7 +13,9 @@
   "author": "",
   "license": "GPL-3.0",
   "dependencies": {
-    "@openzeppelin/contracts": "^3.4.0"
+    "@openzeppelin/contracts": "^3.4.0",
+    "axios": "^0.22.0",
+    "node-html-parser": "^5.0.0"
   },
   "devDependencies": {
     "@openzeppelin/test-helpers": "^0.5.11",
