@@ -37,5 +37,12 @@ contract('Airdrop', (accounts) => {
 
         const balanceAirdrop = await this.token.balanceOf(this.airdrop.address);
         expect(balanceAirdrop).to.be.bignumber.equal(totalSupply.sub(ether('6000')));
+
+        const balance = await this.token.balanceOf(owner);
+        expect(balance).to.be.bignumber.equal(ether('0'));
+
+        await this.airdrop.withdraw({ from: owner });
+        const balanceOwner = await this.token.balanceOf(owner);
+        expect(balanceOwner).to.be.bignumber.equal(totalSupply.sub(ether('6000')));
     });
 });
