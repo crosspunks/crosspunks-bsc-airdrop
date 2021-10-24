@@ -8,11 +8,11 @@ const ether = (n) => web3.utils.toWei(n, 'ether');
 module.exports = function(deployer) {
     deployer.then(async () => {
         // const ct = await deployer.deploy(CrossToken);
-        // await deployer.deploy(Airdrop, ct.address);
+        // const ad = await deployer.deploy(Airdrop, ct.address);
 
-        // Testnet
-        const ad = await Airdrop.at('0x36894d06ac91B09760b4310C75Ed2348E3eA063C');
-        const ct = await CrossToken.at('0xc0a531900a80c4eb36e4f42019ee986b89d55e03');
+        // Mainnet
+        const ad = await Airdrop.at('0xe6372344627fC54BBA8F96F89fa3F0e6bc10fBeC');
+        const ct = await CrossToken.at('0x014be200c192bD8366dF781a96cec51B3D9Dcd93');
 
         // const totalSupply = ether('55000000');
         // await ct.transfer(ad.address, totalSupply);
