@@ -2,8 +2,8 @@ const axios = require('axios');
 const fs = require('fs');
 
 axios.post('https://graphql.bitquery.io/', {
-    "query":"query ($network: EthereumNetwork!, $token: String!, $zero: String!, $limit: Int!, $offset: Int!, $from: ISO8601DateTime) {\n  ethereum(network: $network) {\n    transfers(\n      options: {desc: \"block.timestamp.time\", limit: $limit, offset: $offset}\n      date: {since: $from}\n      amount: {gt: 0}\n      currency: {is: $token}\n      sender: {is: $zero}\n    ) {\n      block(time: {before: \"2021-11-08T13:10:22.000Z\"}) {\n        timestamp {\n          time(format: \"%Y-%m-%d %H:%M:%S\")\n        }\n      }\n      sender {\n        address\n      }\n      receiver {\n        address\n      }\n      currency {\n        symbol\n      }\n      count\n      transaction {\n        hash\n      }\n    }\n  }\n}\n",
-    "variables":"{\"limit\":40000,\"offset\":0,\"network\":\"bsc\",\"token\":\"0x360673a34cf5055dfc22c53bc063e948a243293b\",\"zero\":\"0x0000000000000000000000000000000000000000\",\"from\":\"2021-09-04\",\"dateFormat\":\"%Y-%m-%d\"}"
+    "query":"query ($network: EthereumNetwork!, $token: String!, $zero: String!, $limit: Int!, $offset: Int!, $from: ISO8601DateTime) {\n  ethereum(network: $network) {\n    transfers(\n      options: {desc: \"block.timestamp.time\", limit: $limit, offset: $offset}\n      date: {since: $from, till: null}\n      amount: {gt: 0}\n      currency: {is: $token}\n      sender: {is: $zero}\n    ) {\n      block(time: {before: \"2021-11-12T09:40:22.000Z\"}) {\n        timestamp {\n          time(format: \"%Y-%m-%d %H:%M:%S\")\n        }\n      }\n      sender {\n        address\n      }\n      receiver {\n        address\n      }\n      currency {\n        symbol\n      }\n      count\n      transaction {\n        hash\n      }\n    }\n  }\n}\n",
+    "variables":"{\"limit\":60000,\"offset\":0,\"network\":\"bsc\",\"token\":\"0x360673a34cf5055dfc22c53bc063e948a243293b\",\"zero\":\"0x0000000000000000000000000000000000000000\",\"from\":\"2021-09-05\",\"dateFormat\":\"%Y-%m-%d\"}"
 }).then(response => {
     let data = response.data.data.ethereum.transfers;
     let res = [];
